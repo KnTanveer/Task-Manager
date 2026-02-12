@@ -1,0 +1,102 @@
+* {
+    font-family: monospace, 'Courier New', Courier;
+}
+
+body {
+    height: 90vh;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 40px;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
+    margin: 30px 2px 20px 2px;
+    height: 100%;
+}
+
+.left, .right {
+    border: 1px solid #c2c2c2;
+    width: 100%;
+    display: flex;
+}
+
+.left {
+    width: 35%;
+    background-color: rgba(194, 194, 194, 0.5);
+    border: 25px;
+}
+
+.views {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: start;
+    justify-content: flex-start;
+}
+.left i {
+    margin: 0px 6px 0px 14px; 
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.right header {
+    font-size: 20px;
+    align-items: flex-start;
+    margin: 0px 0px 16px 20px;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #c0c0c0;
+    background-color: transparent;
+}
+
+.tasks-display {
+    margin-left: 30px;
+}
+
+.tasks-display div {
+    border: none;
+    margin: 10px 0px;
+    padding: 0px;
+    display: flex;    
+}
+
+.tasks-display button {
+    padding: 6px;
+    margin: 3px 6px 3px 3px;
+    border-radius: 25px;
+}
+
+.tasks-display p {
+    display: inline;
+    margin: 0px;
+}
+
+h1 {
+    margin: 30px 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #53709F;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #53709fa5;
+    text-decoration: underline;
+    cursor: pointer;
+}
