@@ -1,0 +1,16 @@
+.modal {
+    display: flex;
+    justify-content: center;
+}
+
+.modal div {
+    display: flex;
+}
+
+.modal div p {
+    display: block;
+}
+
+.text {
+    max-width: 50px;
+}
