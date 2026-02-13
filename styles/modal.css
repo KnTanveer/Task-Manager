@@ -11,6 +11,17 @@
     display: block;
 }
 
+.modal div {
+    display: flex;
+    justify-content: column;
+    flex-wrap: nowrap;
+}
+
+.modal div p {
+    max-width: 50px;
+}
+
 .text {
     max-width: 50px;
+    margin: 0px;
 }
