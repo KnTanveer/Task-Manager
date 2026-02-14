@@ -5,7 +5,7 @@ class Modal {
     taskName = document.getElementById("taskName");
 
     constructor() {
-            this.handleEsc = this.handleEsc.bind(this);
+            this.handleKey = this.handleKey.bind(this);
     }
 
     init() {
@@ -13,12 +13,12 @@ class Modal {
         this.closeBtn.addEventListener('click', () => { this.close(); });
 
         this.modal.addEventListener('click', (e) => {
-            if (e.target === 'modal') {
+            if (e.target === this.modal) {
                 this.close();
             }
         });
 
-        document.addEventListener('keydown', this.handleEsc);
+        document.addEventListener('keydown', this.handleKey);
     }
 
     open() {
@@ -34,7 +34,7 @@ class Modal {
         this.modal.classList.remove('active');
     }
 
-    handleEsc(e) {
+    handleKey(e) {
         if (e.key === 'Escape') {
             this.close();
         }
