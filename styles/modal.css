@@ -65,3 +65,11 @@
 .modal-right i:hover {
   color: var(--accent);
 }
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #555;
+}
+
