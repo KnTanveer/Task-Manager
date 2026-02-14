@@ -1,3 +1,3 @@
-import { tasks } from "../data/tasks.js";
+import { tasks } from "../data/data.js";
 
 console.log(tasks);

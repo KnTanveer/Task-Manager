@@ -1,5 +1,6 @@
 :root {
     --accent-color: #53709F;
+    --background-color: rgba(194, 194, 194, 0.5);
 }
 
 * {
@@ -8,6 +9,11 @@
 
 body {
     height: 90vh;
+}
+
+.preview {
+    height: 90vh;
+    max-width: 900px;
 }
 
 header {
@@ -28,6 +34,7 @@ section {
 
 .left, .right {
     border: 1px solid #c2c2c2;
+    border-radius: 12px;
     width: 100%;
     display: flex;
 }
@@ -36,7 +43,6 @@ section {
     width: 35%;
     max-width: 200px;
     background-color: rgba(194, 194, 194, 0.5);
-    border: 25px;
     display: block;
 }
 
@@ -77,9 +83,15 @@ section {
 }
 
 button {
-    border-radius: 20px;
+    border-radius: 6px;
+    padding: 2px;
     border: 1px solid #c0c0c0;
-    background-color: transparent;
+}
+
+input {
+    border-radius: 6px;
+    padding: 2px;
+    border: 1px solid #c0c0c0;
 }
 
 .tasks-display {

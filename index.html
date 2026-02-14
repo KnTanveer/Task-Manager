@@ -12,47 +12,58 @@
     <header>
         <div>Tasks Manager</div>
     </header>
-    <section>
-        <div class="left">
-            <div class="views">
-                <div><i class="fas fa-plus"></i><a>Add Task</a></div>
-                <div><i class="fas fa-magnifying-glass"></i><a>Search</a></div>
-                <div><i class="fas fa-calendar-day"></i><a>Today</a></div>
-                <div><i class="fas fa-calendar-days"></i><a>Upcoming</a></div>
-                <hr class="divider">
-                <div><i class="fas fa-hashtag"></i><a>Projects</a></div>
+    <div class="preview">
+        <section>
+            <div class="left">
+                <div class="views">
+                    <div><i class="fas fa-plus"></i><a>Add Task</a></div>
+                    <div><i class="fas fa-magnifying-glass"></i><a>Search</a></div>
+                    <div><i class="fas fa-inbox"></i><a>Inbox</a></div>
+                    <div><i class="fas fa-calendar-day"></i><a>Today</a></div>
+                    <div><i class="fas fa-calendar-days"></i><a>Upcoming</a></div>
+                    <hr class="divider">
+                    <div><i class="fas fa-hashtag"></i><a>Projects</a></div>
+                </div>
+                <div class="projects-list">
+                    <p>Project 1</p>
+                    <p>Project 2</p>
+                    <p>Project 3</p>
+                </div>
             </div>
-            <div class="projects-list">
-                <p>Project 1</p>
-                <p>Project 2</p>
-                <p>Project 3</p>
-            </div>
-        </div>
-        <div class="right">
-            <header>Today</header>
-            <div class="tasks-display">
-                <div><button></button><p>task 1</p></div>
-                <div><button></button><p>task 2</p></div>
-                <div><button></button><p>task 3</p></div>
-            </div>
-        </div>
-    </section>
+            <div class="right">
+                <header>Today</header>
+                <div class="tasks-display">
+                    <div><button></button><p>task 1</p></div>
+                    <div><button></button><p>task 2</p></div>
+                    <div><button></button><p>task 3</p></div>
+                </div>
+            <div class="modal-wrapper">
+                <div class="modal">
+                    <div class="modal-left">
+                        <div>
+                            <input type="text" id="taskName" placeholder="task name">
+                        </div>
 
-    <modal>
-        <div>
-            <p class="text">Name:</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>Date: </p>
-            <input type="date">
-        </div>
-        <div>
-            <p>Project: </p>
-            <input type="">
-        </div>
-    </modal>
+                        <div class="modal-down">
+                            <input type="date" id="taskDate">
+                            <button id="taskProject">
+                                Inbox <i class="fas fa-angle-down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="modal-right">
+                        <div class="modal-wrapper"></div>
+                        <i class="fas fa-close" id="modalCloseBtn"></i>
+                        <i class="fas fa-floppy-disk" id="modalSaveBtn"></i>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
 
     <script src="scripts/app.js" type="module"></script>
+    <script src="scripts/tasks.js" type="module"></script>
 </body>
 </html>
