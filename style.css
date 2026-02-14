@@ -1,140 +1,148 @@
 :root {
-    --accent-color: #53709F;
-    --background-color: rgba(194, 194, 194, 0.5);
+  --bg: #fafafa;
+  --panel: #ffffff;
+  --border: #e6e6e6;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --accent: #53709f;
 }
 
 * {
-    font-family: monospace, 'Courier New', Courier;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-    height: 90vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
-.preview {
-    height: 90vh;
-    max-width: 900px;
+.app-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-height: 40px;
+.app-header h1 {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    column-gap: 10px;
-    margin: 30px 2px 20px 2px;
-    height: 100%;
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: calc(100vh - 56px);
 }
 
-.left, .right {
-    border: 1px solid #c2c2c2;
-    border-radius: 12px;
-    width: 100%;
-    display: flex;
-}
+/* Sidebar */
 
-.left {
-    width: 35%;
-    max-width: 200px;
-    background-color: rgba(194, 194, 194, 0.5);
-    display: block;
-}
-
-.projects-list {
-    margin: 10px 0px 0px 32px;
-}
-
-.projects-list p {
-    margin: 8px 0px;
-    cursor: pointer;
-}
-
-.projects-list p:hover {
-    color: var(--accent-color);
+.sidebar {
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  background: var(--panel);
 }
 
 .views {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: start;
-    justify-content: flex-start;
-}
-.left i {
-    margin: 0px 6px 0px 14px; 
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.right {
-    display: flex;
-    flex-direction: column;
+.view-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
 }
 
-.right header {
-    font-size: 20px;
-    align-items: flex-start;
-    margin: 0px 0px 16px 20px;
+.view-item:hover {
+  background: #f2f4f7;
 }
 
-button {
-    border-radius: 6px;
-    padding: 2px;
-    border: 1px solid #c0c0c0;
+.view-item i {
+  color: var(--muted);
 }
 
-input {
-    border-radius: 6px;
-    padding: 2px;
-    border: 1px solid #c0c0c0;
+hr {
+  margin: 12px 0;
+  border: none;
+  height: 1px;
+  background: var(--border);
 }
 
-.tasks-display {
-    margin-left: 30px;
+.projects-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
 }
 
-.tasks-display div {
-    border: none;
-    margin: 10px 0px;
-    padding: 0px;
-    display: flex;    
+.projects-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-.tasks-display button {
-    padding: 6px;
-    margin: 3px 6px 3px 3px;
-    border-radius: 25px;
+.projects-list button {
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  text-align: left;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.tasks-display p {
-    display: inline;
-    margin: 0px;
+.projects-list button:hover {
+  background: #f2f4f7;
+  color: var(--accent);
 }
 
-h1 {
-    margin: 30px 20px;
+/* Content */
+
+.content {
+  padding: 24px;
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
+.content h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
-    cursor: pointer;
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.divider {
-    border: 0; 
-    height: 1px; 
-    width: 120px;
-    background: #ccc;
-    margin: 4px 12px;
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.task:hover {
+  background: #f5f7fa;
+}
+
+.task input {
+  accent-color: var(--accent);
+}
+
+.task span {
+  font-size: 15px;
 }

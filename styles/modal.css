@@ -1,73 +1,67 @@
-:root {
-    --background-color: rgba(194, 194, 194, 0.5);
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.15);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
 
-.modal-wrapper {
-    display: flex;
-    justify-content: center;
+.modal-wrapper.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal {
-    border: 1px solid #c2c2c2;
-    background-color: var(--background-color);
-    padding: 8px 12px;
-    border-radius: 15px;
-    max-width: 300px;
-
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  width: 320px;
+  display: flex;
+  gap: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .modal-left {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.modal-left div {
-    margin: 8px 0;
-    display: flex;
+.modal-left input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
 }
 
-.modal-down {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 6px;
+.modal-row {
+  display: flex;
+  gap: 8px;
 }
 
-.modal-left input,
-.modal-left button {
-    border-radius: 6px;
-    padding: 4px 6px;
-    border: none;
-    background-color: transparent;
+.project-btn {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: white;
+  cursor: pointer;
 }
 
 .modal-right {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--muted);
 }
 
-#modalCloseBtn,
-#modalSaveBtn {
-    cursor: pointer;
+.modal-right i {
+  cursor: pointer;
 }
 
-#modalCloseBtn:hover,
-#modalSaveBtn:hover {
-    opacity: 0.5;
-}
-
-#taskProject {
-    min-width: 100px;
-    height: 23px;
-}
-
-#taskName {
-    width: 100%;
-    height: 22px;
+.modal-right i:hover {
+  color: var(--accent);
 }

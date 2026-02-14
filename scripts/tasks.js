@@ -1,10 +1,11 @@
 import { tasks } from "../data/data.js";
+import { modal } from "./modal.js";
+
 const taskInput = document.getElementById('taskName');
 const taskDate = document.getElementById('taskDate');
 const saveBtn = document.getElementById('modalSaveBtn');
 
 function addTask() {
-
     tasks.push({
         name: taskInput.value,
         date: taskDate.value,
@@ -12,6 +13,7 @@ function addTask() {
     });
     
     taskInput.value = '';
+    modal.close();
     renderTasks();
 }
 
