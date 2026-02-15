@@ -120,13 +120,13 @@ hr {
   font-weight: 600;
 }
 
-.tasks {
+.task {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.task {
+.task-label {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -135,14 +135,14 @@ hr {
   cursor: pointer;
 }
 
-.task:hover {
+.task-label:hover {
   background: #f5f7fa;
 }
 
-.task input {
+.task-label input {
   accent-color: var(--accent);
 }
 
-.task span {
+.task-label span {
   font-size: 15px;
 }
