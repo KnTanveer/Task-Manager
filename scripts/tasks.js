@@ -9,8 +9,7 @@ export function addTask() {
     tasks.push({
         name: taskInput.value,
         date: taskDate.value,
-        project: 'Inbox',
-        idx: 0
+        project: 'Inbox'
     });
     
     taskInput.value = '';
@@ -25,22 +24,31 @@ export function renderTasks() {
     let contentsHTML = "";
     tasks.forEach((task, idx) => {
         task.idx = idx;
-
+        
         contentsHTML += `
-            <div class="task">
-                <label class="task-label">
-                <input type="checkbox" />
-                <span>${task.name}</span>
-                </label>
-            </div>  `
-
-         onclick="deleteTask(${task.idx})"
+        <div class="task">
+        <label class="task-label">
+        <input type="checkbox" class="taskCheckbox" data-idx="${idx}"/>
+        <span>${task.name}</span>
+        </label>
+        </div>  `
     });
-
     tasksDiv.innerHTML = contentsHTML;
+    
+    document.querySelectorAll('.taskCheckbox').forEach((checkbox) => {
+        checkbox.addEventListener('change', (e) => {
+            const idx = Number(e.target.dataset.idx);
+            deleteTask(idx);
+        });
+    });
+    console.log(tasks);
 }
 
+
+
 function deleteTask(idx) {
-    tasks.splice(idx ,1);
-    renderTasks();
+    setTimeout(() => {
+        tasks.splice(idx ,1);
+        renderTasks();
+    }, 500);
 }
