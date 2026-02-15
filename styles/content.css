@@ -45,3 +45,16 @@
   color: #8a94a6;
   white-space: nowrap;
 }
+
+.task-date.yesterday {
+  color: #e26b6b;
+}
+
+.task-date.today {
+  color: #5fbf8f;
+}
+
+.task-date.tomorrow {
+  color: #e0b84f;
+}
+

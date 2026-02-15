@@ -1,6 +1,6 @@
 import { tasks } from "../data/data.js";
 import { modal } from "./modal.js";
-
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 export function addTask() {
     const taskInput = document.getElementById('taskName');
@@ -22,16 +22,29 @@ export function renderTasks() {
     let tasksDiv = document.querySelector('.tasks');
     
     let contentsHTML = "";
-    tasks.forEach((task, idx) => {
+    const today = dayjs().format('YYYY-MM-DD')
+    const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+    
+    const sortedTask = tasks.toSorted((a, b) => {return new Date(a.date) - new Date(b.date)});
+    sortedTask.forEach((task, idx) => {
         task.idx = idx;
+        let dateClass;
+        
+        if (task.date === today) {
+            dateClass = 'today'
+        } else if (dayjs(task.date).isBefore(today)) {
+            dateClass = 'yesterday'
+        } else if (task.date === tomorrow) {
+            dateClass = 'tomorrow'
+        }
         
         contentsHTML += `
         <div class="task">
-            <label class="task-label">
-                <input type="checkbox" class="taskCheckbox" data-idx="${idx}" />
-                <span class="task-name">${task.name}</span>
-                <span class="task-date">${task.date}</span>
-            </label>
+        <label class="task-label">
+        <input type="checkbox" class="taskCheckbox" data-idx="${idx}" />
+        <span class="task-name">${task.name}</span>
+        <span class="task-date ${dateClass}">${task.date}</span>
+        </label>
         </div> `
     });
     tasksDiv.innerHTML = contentsHTML;
