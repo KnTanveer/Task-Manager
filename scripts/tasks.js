@@ -27,11 +27,12 @@ export function renderTasks() {
         
         contentsHTML += `
         <div class="task">
-        <label class="task-label">
-        <input type="checkbox" class="taskCheckbox" data-idx="${idx}"/>
-        <span>${task.name}</span>
-        </label>
-        </div>  `
+            <label class="task-label">
+                <input type="checkbox" class="taskCheckbox" data-idx="${idx}" />
+                <span class="task-name">${task.name}</span>
+                <span class="task-date">${task.date}</span>
+            </label>
+        </div> `
     });
     tasksDiv.innerHTML = contentsHTML;
     
