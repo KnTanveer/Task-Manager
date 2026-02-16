@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modal.init();
     saveBtn.addEventListener('click', addTask);
-    
 });
 
 document.addEventListener('keydown', (e) => {
