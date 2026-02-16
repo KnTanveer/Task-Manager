@@ -5,13 +5,11 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 let currentFilter = 'Today';
 
 document.getElementById('todayView').addEventListener('click', () => {
-    console.log('todayClicked')
     currentFilter = 'Today';
     renderTasks();
 });
 
 document.getElementById('upcomingView').addEventListener('click', () => {
-    console.log('upcomingClicked')
     currentFilter = 'Upcoming'
     renderTasks();
 });
@@ -81,7 +79,7 @@ function deleteTask(idx) {
 function getFilteredTasks() {
     if (currentFilter === 'Today') {
         return tasks.filter(task =>
-            dayjs(task.date).isSame(dayjs(), 'day')
+            dayjs(task.date).isSame(dayjs(), 'day') || dayjs(task.date).isBefore(dayjs(), 'day')
         );
     }
 
