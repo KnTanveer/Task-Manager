@@ -5,8 +5,10 @@ const saveBtn = document.getElementById('modalSaveBtn');
 
 document.addEventListener('DOMContentLoaded', () => {
     renderTasks();
+
     modal.init();
     saveBtn.addEventListener('click', addTask);
+    
 });
 
 document.addEventListener('keydown', (e) => {
