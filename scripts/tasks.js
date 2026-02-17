@@ -1,7 +1,8 @@
-import { tasks } from "../data/data.js";
+import { tasks, saveTasks, loadTasks } from "../data/data.js";
 import { modal } from "./modal.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
+export const storageKey = 'tasks';
 let currentFilter = 'Today';
 
 document.getElementById('todayView').addEventListener('click', () => {
@@ -39,6 +40,7 @@ export function addTask() {
         modal.editingTaskId = null;
         modal.close();
         renderTasks();
+        saveTasks();
         return
     }
 
@@ -57,6 +59,7 @@ export function addTask() {
     taskDate.value = '';
     modal.close();
     renderTasks();
+    saveTasks();
 }
 
 export function renderTasks() {
@@ -119,6 +122,7 @@ function deleteTask(id) {
         if (index === -1) return;
         tasks.splice(index ,1);
         renderTasks();   
+        saveTasks();
     }, 500);
 }
 
