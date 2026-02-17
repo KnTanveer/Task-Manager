@@ -25,18 +25,15 @@ document.getElementById('inboxView').addEventListener('click', () => {
 
 export function addTask() {
     if (modal.editingTaskId) {
-        console.log(modal.editingTaskId)
         const index = tasks.findIndex(task => task.id === modal.editingTaskId);
         if (index === -1) return;
 
-        console.log(index);
         tasks[index] = { 
             id: modal.editingTaskId,
             name: modal.taskNameEl.value.trim(),
             date: modal.taskDateEl.value
         };
 
-        console.log(tasks[index]);
         modal.editingTaskId = null;
         modal.close();
         renderTasks();
@@ -53,7 +50,6 @@ export function addTask() {
         date: taskDate.value,
         project: 'Inbox'
     });
-    console.log(tasks)
     
     taskInput.value = '';
     taskDate.value = '';
@@ -70,8 +66,6 @@ export function renderTasks() {
     const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
     let filteredTasks = getFilteredTasks();
 
-    console.log(filteredTasks);
-    
     let sortedTasks = filteredTasks.toSorted((a, b) => {return new Date(a.date) - new Date(b.date)});
     sortedTasks.forEach((task) => {
         let dateClass;
@@ -111,9 +105,6 @@ export function renderTasks() {
             const editId = e.currentTarget.dataset.editId;
             const taskName = e.currentTarget.querySelector('.task-name').dataset.taskName;
             const taskDate = e.currentTarget.querySelector('.task-date').dataset.taskDate;
-            console.log(editId);
-            console.log(taskName);
-            console.log(taskDate);
             modal.edit(editId, taskName, taskDate);
         })
     });
