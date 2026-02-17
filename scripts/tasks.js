@@ -70,6 +70,8 @@ export function renderTasks() {
     const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
     let filteredTasks = getFilteredTasks();
 
+    console.log(filteredTasks);
+    
     let sortedTasks = filteredTasks.toSorted((a, b) => {return new Date(a.date) - new Date(b.date)});
     sortedTasks.forEach((task) => {
         let dateClass;
@@ -84,17 +86,18 @@ export function renderTasks() {
         
         contentsHTML += `
         <div class="task">
-            <div class="task-div">
-                <input type="checkbox" class="task-checkbox" data-id="${task.id}" />
-                <div class="task-row" data-edit-id="${task.id}"> 
-                    <span class="task-name" data-task-name="${task.name}">${task.name}</span>
-                    <span class="task-date ${dateClass}" data-task-date="${task.date}">${task.date}</span>
-                    <span class="edit-btn"><i class="fas fa-pen"></i></span>
-                </div>
-            </div>
+        <div class="task-div">
+        <input type="checkbox" class="task-checkbox" data-id="${task.id}" />
+        <div class="task-row" data-edit-id="${task.id}"> 
+        <span class="task-name" data-task-name="${task.name}">${task.name}</span>
+        <span class="task-date ${dateClass}" data-task-date="${task.date}">${task.date}</span>
+        <span class="edit-btn"><i class="fas fa-pen"></i></span>
+        </div>
+        </div>
         </div> `
     });
     tasksDiv.innerHTML = contentsHTML;
+    if (filteredTasks.length === 0) tasksDiv.innerHTML = '<p style="color: rgba(194, 194, 194, 0.5);">No tasks yet.</p>';
     
     document.querySelectorAll('.task-checkbox').forEach((checkbox) => {
         checkbox.addEventListener('change', (e) => {
