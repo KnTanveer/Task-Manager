@@ -17,6 +17,25 @@ document.getElementById('upcomingView').addEventListener('click', () => {
 });
 
 export function addTask() {
+    if (modal.editingTaskId) {
+        console.log(modal.editingTaskId)
+        const index = tasks.findIndex(task => task.id === modal.editingTaskId);
+        if (index === -1) return;
+
+        console.log(index);
+        tasks[index] = { 
+            id: modal.editingTaskId,
+            name: modal.taskNameEl.value.trim(),
+            date: modal.taskDateEl.value
+        };
+
+        console.log(tasks[index]);
+        modal.editingTaskId = null;
+        modal.close();
+        renderTasks();
+        return
+    }
+
     const taskInput = document.getElementById('taskName');
     const taskDate = document.getElementById('taskDate');
 
@@ -26,6 +45,7 @@ export function addTask() {
         date: taskDate.value,
         project: 'Inbox'
     });
+    console.log(tasks)
     
     taskInput.value = '';
     taskDate.value = '';
@@ -55,27 +75,42 @@ export function renderTasks() {
         
         contentsHTML += `
         <div class="task">
-            <label class="task-label">
-                <input type="checkbox" class="taskCheckbox" data-id="${task.id}" />
-                <span class="task-name">${task.name}</span>
-                <span class="task-date ${dateClass}">${task.date}</span>
-            </label>
+            <div class="task-div">
+                <input type="checkbox" class="task-checkbox" data-id="${task.id}" />
+                <div class="task-row" data-edit-id="${task.id}"> 
+                    <span class="task-name" data-task-name="${task.name}">${task.name}</span>
+                    <span class="task-date ${dateClass}" data-task-date="${task.date}">${task.date}</span>
+                    <span class="edit-btn"><i class="fas fa-pen"></i></span>
+                </div>
+            </div>
         </div> `
     });
     tasksDiv.innerHTML = contentsHTML;
     
-    document.querySelectorAll('.taskCheckbox').forEach((checkbox) => {
+    document.querySelectorAll('.task-checkbox').forEach((checkbox) => {
         checkbox.addEventListener('change', (e) => {
             const id = e.target.dataset.id;
             deleteTask(id);
         });
+    });
+
+    document.querySelectorAll('.task-row').forEach((row) => {
+        row.addEventListener('click', (e) => {
+            const editId = e.currentTarget.dataset.editId;
+            const taskName = e.currentTarget.querySelector('.task-name').dataset.taskName;
+            const taskDate = e.currentTarget.querySelector('.task-date').dataset.taskDate;
+            console.log(editId);
+            console.log(taskName);
+            console.log(taskDate);
+            modal.edit(editId, taskName, taskDate);
+        })
     });
 }
 
 function deleteTask(id) {
     setTimeout(() => {
         const index = tasks.findIndex(task => task.id === id);
-        if (index === -1) { return }
+        if (index === -1) return;
         tasks.splice(index ,1);
         renderTasks();   
     }, 500);

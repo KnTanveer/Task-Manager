@@ -2,7 +2,10 @@ class Modal {
     modal = document.getElementById("modal");
     openBtn = document.getElementById("openModal");
     closeBtn = document.getElementById("closeModal");
-    taskName = document.getElementById("taskName");
+    taskNameEl = document.getElementById("taskName");
+    taskDateEl = document.getElementById("taskDate");
+
+    editingTaskId = null;
 
     constructor() {
             this.handleKey = this.handleKey.bind(this);
@@ -25,9 +28,16 @@ class Modal {
         this.modal.classList.add('active');
 
         requestAnimationFrame(() => {
-            this.taskName.focus();
-            this.taskName.select();
+            this.taskNameEl.focus();
+            this.taskNameEl.select();
         });
+    }
+
+    edit(editId, taskName, taskDate) {
+        this.editingTaskId = editId;
+        this.taskNameEl.value = taskName;
+        this.taskDateEl.value = taskDate;
+        this.open();
     }
 
     close() {

@@ -14,7 +14,7 @@
   gap: 12px;
 }
 
-.task-label {
+.task-row, .task-div {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -23,15 +23,19 @@
   cursor: pointer;
 }
 
-.task-label:hover {
+.task-div {
+  padding: 0px;
+}
+
+.task-row:hover {
   background: #f5f7fa;
 }
 
-.task-label input {
+.task-row input {
   accent-color: var(--accent);
 }
 
-.task-label span {
+.task-row span {
   font-size: 15px;
 }
 
@@ -58,3 +62,13 @@
   color: #e0b84f;
 }
 
+.edit-btn {
+  opacity: 0;
+  color: #c2c2c2;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.task-row:hover .edit-btn {
+  opacity: 0.5;
+}
