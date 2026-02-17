@@ -11,8 +11,14 @@ document.getElementById('todayView').addEventListener('click', () => {
 });
 
 document.getElementById('upcomingView').addEventListener('click', () => {
-    currentFilter = 'Upcoming'
+    currentFilter = 'Upcoming';
     document.getElementById('contentHeader').innerHTML = 'Upcoming';
+    renderTasks();
+});
+
+document.getElementById('inboxView').addEventListener('click', () => {
+    currentFilter = 'Inbox';
+    document.getElementById('contentHeader').innerHTML = 'Inbox';
     renderTasks();
 });
 
@@ -127,6 +133,10 @@ function getFilteredTasks() {
         return tasks.filter(task =>
             dayjs(task.date).isAfter(dayjs(), 'day')
         );
+    }
+
+    if (currentFilter === 'Inbox') {
+        return tasks.filter(task => !task.date)
     }
 
     return tasks;
