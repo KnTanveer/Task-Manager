@@ -25,18 +25,27 @@ export function renderProjects() {
     
     projects.forEach((project) => {
         projectsHTML += `
-            <button class="projects-options">${project}</button>
+            <button class="projects-options" id="${project}View">
+                <i class="fas fa-hashtag"></i><span>${project}</span>
+            </button>
         `
     });
 
     projectsDiv.innerHTML = projectsHTML;
+
+    projectsHTML = ""; 
+    projects.forEach((project) => {
+        projectsHTML += `
+            <button class="view-item" id="${project}View">
+                <i class="fas fa-hashtag"></i><span>${project}</span>
+            </button>
+        `
+    });
     projectsSidebar.innerHTML = projectsHTML;
 }
 
-export function addProject() {
-
-}
-
-export function deleteProject() {
-
+class Project {
+    updateContents() {
+        document.getElementById('contentHeader').innerHTML = 'Projects';
+    }
 }

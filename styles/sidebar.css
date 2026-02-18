@@ -31,7 +31,7 @@
 }
 
 hr {
-  margin: 12px 0;
+  margin: 6px 0;
   border: none;
   height: 1px;
   background: var(--border);
@@ -43,21 +43,6 @@ hr {
   gap: 8px;
   font-size: 13px;
   color: var(--muted);
-}
-
-.projects-sidebar-list {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.projects-sidebar-list button {
-  background: none;
-  border: none;
-  padding: 2px 4px;
-  text-align: left;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
 .projects-sidebar-list button:hover {
