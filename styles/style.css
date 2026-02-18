@@ -35,6 +35,12 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 160px 1fr;
   height: calc(100vh - 56px);
+}
+
+@media (min-width: 650px) {
+  .app {
+    grid-template-columns: 240px 1fr;
+  }
 }
