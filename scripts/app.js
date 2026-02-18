@@ -1,7 +1,7 @@
 import { modal } from "./modal.js";
 import { renderTasks, addTask } from "./tasks.js";
 import { loadTasks } from "../data/data.js";
-import { projectsMenu } from "./projects.js";
+import { projectsMenu, renderProjects } from "./projects.js";
 
 const saveBtn = document.getElementById('modalSaveBtn');
 
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTasks();
 
     projectsMenu();
+    renderProjects();
     modal.init();
     saveBtn.addEventListener('click', addTask);
 });

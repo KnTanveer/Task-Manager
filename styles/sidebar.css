@@ -45,22 +45,22 @@ hr {
   color: var(--muted);
 }
 
-.projects-list {
+.projects-sidebar-list {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
 }
 
-.projects-list button {
+.projects-sidebar-list button {
   background: none;
   border: none;
-  padding: 6px 8px;
+  padding: 2px 4px;
   text-align: left;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.projects-list button:hover {
+.projects-sidebar-list button:hover {
   background: #f2f4f7;
   color: var(--accent);
 }

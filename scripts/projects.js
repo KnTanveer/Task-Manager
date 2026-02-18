@@ -1,11 +1,36 @@
+import { projects } from "../data/data.js";
+
 export function projectsMenu() {
-    document.querySelector('.project-btn').addEventListener('click', () => {
-        console.log('projects btn clicked');
+    const projectBtn = document.querySelector('.project-btn');
+    const projectList = document.querySelector('.project-list');
+
+    projectBtn.addEventListener('click', () => {
+        const isOpen = projectBtn.classList.toggle('open');
+
+        if (isOpen) {
+            projectBtn.innerHTML = 'Projects <i class="fas fa-eye"></i>';
+            projectList.style.display = 'block';
+            renderProjects();
+        } else {
+            projectBtn.innerHTML = 'Projects <i class="fas fa-eye-slash"></i>';
+            projectList.style.display = 'none';
+        }
     })
 }
 
 export function renderProjects() {
+    let projectsDiv = document.querySelector('.project-list')
+    let projectsSidebar = document.querySelector('.projects-sidebar-list')
+    let projectsHTML = "";
+    
+    projects.forEach((project) => {
+        projectsHTML += `
+            <button class="projects-options">${project}</button>
+        `
+    });
 
+    projectsDiv.innerHTML = projectsHTML;
+    projectsSidebar.innerHTML = projectsHTML;
 }
 
 export function addProject() {

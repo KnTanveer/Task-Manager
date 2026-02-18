@@ -3,78 +3,110 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.15);
-
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
 
 .modal-wrapper.active {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal {
   background: white;
-  border-radius: 14px;
-  padding: 16px;
-  width: 320px;
+  border-radius: 16px;
+  padding: 18px;
+  width: 360px;
   display: flex;
-  gap: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  gap: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
+/* LEFT */
 .modal-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .modal-left input {
+  padding: 10px 12px;
+  border-radius: 10px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px;
+  font-size: 0.95rem;
 }
 
+/* DATE + PROJECT BUTTON */
 .modal-row {
   display: flex;
   gap: 8px;
 }
 
-.project-btn-div {
+.modal-row button {
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 10px;
+  border-radius: 10px;
+  background: white;
+  padding: 10px;
   cursor: pointer;
 }
 
-.project-btn {
-  border: none;
-  background: white;
-  padding: 0;
+.modal-row button:hover {
+  border-color: var(--accent);
 }
 
+/* PROJECT LIST */
+.project-list {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-list.active {
+  display: flex;
+}
+
+.project-btn i {
+  font-size: 13px;
+}
+
+.projects-options {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.projects-options:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* RIGHT ICONS */
 .modal-right {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   color: var(--muted);
 }
 
 .modal-right i {
   cursor: pointer;
+  font-size: 1.1rem;
 }
 
 .modal-right i:hover {
   color: var(--accent);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+/* FOCUS */
+input:focus {
   outline: none;
-  border-color: #555;
+  border-color: var(--accent);
 }
-

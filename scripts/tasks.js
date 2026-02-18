@@ -53,7 +53,6 @@ export function addTask() {
     });
     
     taskInput.value = '';
-    taskDate.value = '';
     modal.close();
     renderTasks();
     saveTasks();
