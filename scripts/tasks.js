@@ -2,7 +2,8 @@ import { tasks, saveTasks, loadTasks } from "../data/data.js";
 import { modal } from "./modal.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-export const storageKey = 'tasks';
+export const tasksKey = 'tasks';
+export const projectsKey = 'projects';
 let currentFilter = 'Today';
 
 document.getElementById('todayView').addEventListener('click', () => {
