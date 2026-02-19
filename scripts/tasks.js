@@ -1,28 +1,40 @@
 import { tasks, saveTasks, loadTasks } from "../data/data.js";
 import { modal } from "./modal.js";
+import { projects } from "../data/data.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 export const tasksKey = 'tasks';
 export const projectsKey = 'projects';
-let currentFilter = 'Today';
 
-document.getElementById('todayView').addEventListener('click', () => {
-    currentFilter = 'Today';
-    document.getElementById('contentHeader').innerHTML = 'Today';
-    renderTasks();
-});
+let currentFilter = 'Today'
+export function setFilterBtns() {
+    document.getElementById('todayView').addEventListener('click', () => {
+        currentFilter = 'Today';
+        document.getElementById('contentHeader').innerHTML = 'Today';
+        renderTasks();
+    });
 
-document.getElementById('upcomingView').addEventListener('click', () => {
-    currentFilter = 'Upcoming';
-    document.getElementById('contentHeader').innerHTML = 'Upcoming';
-    renderTasks();
-});
+    document.getElementById('upcomingView').addEventListener('click', () => {
+        currentFilter = 'Upcoming';
+        document.getElementById('contentHeader').innerHTML = 'Upcoming';
+        renderTasks();
+    });
 
-document.getElementById('inboxView').addEventListener('click', () => {
-    currentFilter = 'Inbox';
-    document.getElementById('contentHeader').innerHTML = 'Inbox';
-    renderTasks();
-});
+    document.getElementById('inboxView').addEventListener('click', () => {
+        currentFilter = 'Inbox';
+        document.getElementById('contentHeader').innerHTML = 'Inbox';
+        renderTasks();
+    });
+    
+    projects.forEach((project) => {
+        document.getElementById(`${project}View`).addEventListener('click', () => {
+            currentFilter = project;
+            document.getElementById('contentHeader').innerHTML = project;
+            renderTasks();
+        });
+    });
+    return currentFilter;
+}
 
 export function addTask() {
     if (modal.editingTaskId) {
@@ -126,16 +138,20 @@ function getFilteredTasks() {
             dayjs(task.date).isSame(dayjs(), 'day') || dayjs(task.date).isBefore(dayjs(), 'day')
         );
     }
-
+    
     if (currentFilter === 'Upcoming') {
         return tasks.filter(task =>
             dayjs(task.date).isAfter(dayjs(), 'day')
         );
     }
-
+    
     if (currentFilter === 'Inbox') {
         return tasks.filter(task => !task.date)
     }
-
+    
+    if (projects.includes(currentFilter)) {
+        return tasks.filter(task => task.project === currentFilter);
+    }
+    
     return tasks;
 }

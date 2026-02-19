@@ -1,5 +1,5 @@
 import { modal } from "./modal.js";
-import { renderTasks, addTask } from "./tasks.js";
+import { renderTasks, addTask, setFilterBtns } from "./tasks.js";
 import { loadTasks } from "../data/data.js";
 import { projectsMenu, renderProjects } from "./projects.js";
 
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     projectsMenu();
     renderProjects();
     modal.init();
+    setFilterBtns();
     saveBtn.addEventListener('click', addTask);
 });
 

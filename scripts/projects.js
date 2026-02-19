@@ -43,9 +43,3 @@ export function renderProjects() {
     });
     projectsSidebar.innerHTML = projectsHTML;
 }
-
-class Project {
-    updateContents() {
-        document.getElementById('contentHeader').innerHTML = 'Projects';
-    }
-}
