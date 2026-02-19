@@ -1,12 +1,13 @@
 import { modal } from "./modal.js";
 import { renderTasks, addTask, setFilterBtns } from "./tasks.js";
-import { loadTasks } from "../data/data.js";
+import { loadProjects, loadTasks } from "../data/data.js";
 import { projectsMenu, renderProjects } from "./projects.js";
 
 const saveBtn = document.getElementById('modalSaveBtn');
 const modalEl = document.querySelector('.modal-wrapper');
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
     loadTasks();
     renderTasks();
 

@@ -6,8 +6,8 @@ export let tasks = [];
 export let projects = ['Project 0', 'Project 1', 'Project 2'];
 
 export function loadProjects() {
-    const oldTasks = localStorage.getItem(projectsKey); 
-    if (oldTasks) tasks = JSON.parse(oldTasks) 
+    const oldProjects = localStorage.getItem(projectsKey); 
+    if (oldProjects) projects = JSON.parse(oldProjects) 
     renderProjects();
 }
 

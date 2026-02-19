@@ -1,5 +1,6 @@
 import { tasks, saveTasks, loadTasks } from "../data/data.js";
 import { modal } from "./modal.js";
+import { manageProjects } from "./projects.js";
 import { projects } from "../data/data.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
@@ -23,6 +24,10 @@ export function setFilterBtns() {
         currentFilter = 'Inbox';
         document.getElementById('contentHeader').innerHTML = 'Inbox';
         renderTasks();
+    });
+
+    document.getElementById('projectsView').addEventListener('click', () => {
+        manageProjects();
     });
 
     document.querySelector('.projects-sidebar-list').addEventListener('click', (e) => {
@@ -108,14 +113,14 @@ export function renderTasks() {
         
         contentsHTML += `
         <div class="task">
-        <div class="task-div">
-        <input type="checkbox" class="task-checkbox" data-id="${task.id}" />
-        <div class="task-row" data-edit-id="${task.id}"> 
-        <span class="task-name" data-task-name="${task.name}">${task.name}</span>
-        <span class="task-date ${dateClass}" data-task-date="${task.date}">${task.date}</span>
-        <span class="edit-btn"><i class="fas fa-pen"></i></span>
-        </div>
-        </div>
+            <div class="task-div">
+                <input type="checkbox" class="task-checkbox" data-id="${task.id}" />
+                <div class="task-row" data-edit-id="${task.id}"> 
+                    <span class="task-name" data-task-name="${task.name}">${task.name}</span>
+                    <span class="task-date ${dateClass}" data-task-date="${task.date}">${task.date}</span>
+                    <span class="edit-btn"><i class="fas fa-pen"></i></span>
+                </div>
+            </div>
         </div> `
     });
     tasksDiv.innerHTML = contentsHTML;

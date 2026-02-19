@@ -46,7 +46,7 @@
   gap: 8px;
 }
 
-.modal-row button {
+.modal-row button{
   border: 1px solid var(--border);
   border-radius: 10px;
   background: white;
@@ -73,7 +73,7 @@
   font-size: 13px;
 }
 
-.projects-options {
+.projects-options, .delete-project, #newProjectBtn, .newProjectName {
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 6px 12px;
@@ -83,7 +83,7 @@
   font-size: 0.85rem;
 }
 
-.projects-options:hover {
+.projects-options:hover, .delete-project:hover, #newProjectBtn:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
