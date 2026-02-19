@@ -3,7 +3,7 @@ import { tasksKey, projectsKey } from "../scripts/tasks.js";
 import { renderTasks } from "../scripts/tasks.js";
 
 export let tasks = [];
-export let projects = ['Project 0', 'Project 1', 'Project 2'];
+export let projects = [];
 
 export function loadProjects() {
     const oldProjects = localStorage.getItem(projectsKey); 
