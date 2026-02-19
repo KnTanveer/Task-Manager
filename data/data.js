@@ -10,9 +10,7 @@ export function loadProjects() {
     if (oldProjects) {
         projects = JSON.parse(oldProjects);
 
-        projects.sort((a, b) => 
-            a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-        );
+        projects.sort();
     }
     renderProjects();
 }
