@@ -7,9 +7,16 @@ export let projects = [];
 
 export function loadProjects() {
     const oldProjects = localStorage.getItem(projectsKey); 
-    if (oldProjects) projects = JSON.parse(oldProjects) 
+    if (oldProjects) {
+        projects = JSON.parse(oldProjects);
+
+        projects.sort((a, b) => 
+            a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        );
+    }
     renderProjects();
 }
+
 
 export function saveProjects() {
     const stringProjects = JSON.stringify(projects);

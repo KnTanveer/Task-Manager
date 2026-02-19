@@ -8,6 +8,7 @@ const modalEl = document.querySelector('.modal-wrapper');
 
 document.addEventListener('DOMContentLoaded', () => {
     loadProjects();
+    
     loadTasks();
     renderTasks();
 
