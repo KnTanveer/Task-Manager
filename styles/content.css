@@ -50,7 +50,7 @@
   white-space: nowrap;
 }
 
-.task-date.yesterday {
+.task-date.overdue{
   color: #e26b6b;
 }
 

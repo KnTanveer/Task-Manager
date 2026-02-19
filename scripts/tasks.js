@@ -41,7 +41,7 @@ export function setFilterBtns() {
     return currentFilter;
 }
 
-let taskProject;
+let taskProject = 'Inbox';
 document.querySelector('.project-list').addEventListener('click', (e) => {
     const btn = e.target.closest('.projects-options');
     if (!btn) return;
@@ -106,7 +106,7 @@ export function renderTasks() {
         if (task.date === today) {
             dateClass = 'today'
         } else if (dayjs(task.date).isBefore(today)) {
-            dateClass = 'yesterday'
+            dateClass = 'overdue'
         } else if (task.date === tomorrow) {
             dateClass = 'tomorrow'
         }

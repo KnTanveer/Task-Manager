@@ -62,7 +62,7 @@ export function manageProjects() {
         projectsHTML += `
             <div class="task">
                 <div class="task-div">
-                    <button class="delete-project">Delete</button>
+                    <button class="delete-project"  data-idx="${idx}">Delete</button>
                     <div class="task-row" data-idx="${idx}">
                         <span class="task-name">${project}</span>
                         <span class="edit-btn"><i class="fas fa-pen"></i></span>
@@ -127,6 +127,8 @@ function editProject(idx, newName) {
     });
     manageProjects();
     renderProjects();
+    saveProjects();
+    saveTasks();
 }
 
 
