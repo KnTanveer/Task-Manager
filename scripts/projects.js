@@ -25,7 +25,7 @@ export function renderProjects() {
     
     projects.forEach((project) => {
         projectsHTML += `
-            <button class="projects-options" id="${project}View">
+            <button class="projects-options" id="${project}View" data-project-btn=${project}>
                 <i class="fas fa-hashtag"></i><span>${project}</span>
             </button>
         `
@@ -43,3 +43,4 @@ export function renderProjects() {
     });
     projectsSidebar.innerHTML = projectsHTML;
 }
+

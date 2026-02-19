@@ -4,6 +4,7 @@ import { loadTasks } from "../data/data.js";
 import { projectsMenu, renderProjects } from "./projects.js";
 
 const saveBtn = document.getElementById('modalSaveBtn');
+const modalEl = document.querySelector('.modal-wrapper');
 
 document.addEventListener('DOMContentLoaded', () => {
     loadTasks();
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && modalEl.classList.contains('active')) {
         addTask();
     }    
 });
