@@ -21,6 +21,18 @@ class Modal {
             }
         });
 
+        document.querySelector('.project-list').addEventListener('click', (e) => {
+                const btn = e.target.closest('.projects-options');
+                if (!btn) return;
+
+                document.querySelectorAll('.projects-options')
+                    .forEach(b => b.classList.remove('active'));
+
+                btn.classList.add('active');
+
+                this.taskProject = btn.dataset.projectBtn;
+            });
+
         document.addEventListener('keydown', this.handleKey);
     }
 
@@ -33,15 +45,29 @@ class Modal {
         });
     }
 
-    edit(editId, taskName, taskDate) {
+    edit(editId, taskName, taskDate, taskProject) {
         this.editingTaskId = editId;
         this.taskNameEl.value = taskName;
         this.taskDateEl.value = taskDate;
+        this.taskProject = taskProject;
+
+        document.querySelectorAll('.projects-options').forEach(btn => {
+            btn.classList.remove('active');
+
+            if (btn.dataset.projectBtn === taskProject) {
+                btn.classList.add('active');
+            }
+        });
+        
         this.open();
     }
-
+    
     close() {
         this.modal.classList.remove('active');
+        document.querySelectorAll('.projects-options').forEach(b => b.classList.remove('active'));
+        this.taskNameEl.value = "";
+        this.taskDateEl.value = "";
+        this.taskProject = 'Inbox';    
     }
 
     handleKey(e) {

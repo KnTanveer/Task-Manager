@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTasks();
     renderTasks();
 
-    projectsMenu();
+    projectsMenu();    
     renderProjects();
-    modal.init();
     setFilterBtns();
+    modal.init();
     saveBtn.addEventListener('click', addTask);
 });
 

@@ -25,10 +25,11 @@ export function renderProjects() {
     
     projects.forEach((project) => {
         projectsHTML += `
-            <button class="projects-options" id="${project}View" data-project-btn=${project}>
-                <i class="fas fa-hashtag"></i><span>${project}</span>
+            <button class="projects-options" 
+                    data-project-btn="${project}">
+                    <span>${project}</span>
             </button>
-        `
+        `;
     });
 
     projectsDiv.innerHTML = projectsHTML;
@@ -36,11 +37,10 @@ export function renderProjects() {
     projectsHTML = ""; 
     projects.forEach((project) => {
         projectsHTML += `
-            <button class="view-item" id="${project}View">
+            <button class="view-item" id="${project}View" data-current-project="${project}">
                 <i class="fas fa-hashtag"></i><span>${project}</span>
             </button>
         `
     });
     projectsSidebar.innerHTML = projectsHTML;
 }
-

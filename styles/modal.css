@@ -88,6 +88,11 @@
   color: var(--accent);
 }
 
+.projects-options.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* RIGHT ICONS */
 .modal-right {
   display: flex;

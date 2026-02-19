@@ -6,7 +6,6 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export const tasksKey = 'tasks';
 export const projectsKey = 'projects';
 
-let currentFilter = 'Today'
 export function setFilterBtns() {
     document.getElementById('todayView').addEventListener('click', () => {
         currentFilter = 'Today';
@@ -25,16 +24,29 @@ export function setFilterBtns() {
         document.getElementById('contentHeader').innerHTML = 'Inbox';
         renderTasks();
     });
-    
-    projects.forEach((project) => {
-        document.getElementById(`${project}View`).addEventListener('click', () => {
-            currentFilter = project;
-            document.getElementById('contentHeader').innerHTML = project;
-            renderTasks();
-        });
+
+    document.querySelector('.projects-sidebar-list').addEventListener('click', (e) => {
+        const btn = e.target.closest('.view-item');
+        if (!btn) return;
+
+        currentFilter = btn.dataset.currentProject
+        document.getElementById('contentHeader').innerHTML = currentFilter;
+        renderTasks();
     });
     return currentFilter;
 }
+
+let taskProject;
+document.querySelector('.project-list').addEventListener('click', (e) => {
+    const btn = e.target.closest('.projects-options');
+    if (!btn) return;
+
+    document.querySelectorAll('.projects-options').forEach(b => b.classList.remove('active'));
+
+    btn.classList.add('active');
+
+    taskProject = btn.dataset.projectBtn;
+});
 
 export function addTask() {
     if (modal.editingTaskId) {
@@ -44,7 +56,8 @@ export function addTask() {
         tasks[index] = { 
             id: modal.editingTaskId,
             name: modal.taskNameEl.value.trim(),
-            date: modal.taskDateEl.value
+            date: modal.taskDateEl.value,
+            project: modal.taskProject
         };
 
         modal.editingTaskId = null;
@@ -56,14 +69,17 @@ export function addTask() {
 
     const taskInput = document.getElementById('taskName');
     const taskDate = document.getElementById('taskDate');
+    
 
     tasks.push({
         id: crypto.randomUUID(),
         name: taskInput.value,
         date: taskDate.value,
-        project: 'Inbox'
+        project: taskProject
     });
-    
+
+    taskProject = 'Inbox';    
+    document.querySelectorAll('.projects-options').forEach(b => b.classList.remove('active'));
     taskInput.value = '';
     modal.close();
     renderTasks();
@@ -115,9 +131,8 @@ export function renderTasks() {
     document.querySelectorAll('.task-row').forEach((row) => {
         row.addEventListener('click', (e) => {
             const editId = e.currentTarget.dataset.editId;
-            const taskName = e.currentTarget.querySelector('.task-name').dataset.taskName;
-            const taskDate = e.currentTarget.querySelector('.task-date').dataset.taskDate;
-            modal.edit(editId, taskName, taskDate);
+            const taskObj = tasks.find(task => task.id === editId);
+            modal.edit(editId, taskObj.name, taskObj.date, taskObj.project);
         })
     });
 }
@@ -132,6 +147,7 @@ function deleteTask(id) {
     }, 500);
 }
 
+let currentFilter = 'Today'
 function getFilteredTasks() {
     if (currentFilter === 'Today') {
         return tasks.filter(task =>
